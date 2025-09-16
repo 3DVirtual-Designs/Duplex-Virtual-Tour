@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>3‑Story House Virtual Tour</title>
+  <title>Duplex Virtual Tour</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link
     rel="stylesheet"
@@ -33,7 +33,7 @@
     var viewer = pannellum.viewer('panorama', {
       "default": {
         "firstScene": "foyer",
-        "author": "Your House Tour",
+        "author": "www.3dvirtual-designs.com",
         "sceneFadeDuration": 1000,
         "autoLoad": true,
         "autoRotate": -2,                         // auto‑rotate speed in deg/sec; negative for clockwise :contentReference[oaicite:1]{index=1}
@@ -49,9 +49,9 @@
           "type": "equirectangular",
           "panorama": "Foyer.jpg",
           "hotSpots": [
-            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Great Room", "sceneId": "greatroom" },
-            { "pitch": 0, "yaw": -30, "type": "scene", "text": "Powder Room", "sceneId": "powder" },
-            { "pitch": 0, "yaw": 150, "type": "scene", "text": "Rec Room (Downstairs)", "sceneId": "recroom_down" }
+            { "pitch": 0, "yaw": -80, "type": "scene", "text": "Great Room", "sceneId": "greatroom" },
+            { "pitch": 0, "yaw": 10, "type": "scene", "text": "Powder Room", "sceneId": "powder" },
+            { "pitch": 0, "yaw": 80, "type": "scene", "text": "Rec Room (Downstairs)", "sceneId": "recroom_down" }
           ]
         },
         "greatroom": {
@@ -271,3 +271,4 @@
   </script>
 </body>
 </html>
+
