@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3‑Story House Virtual Tour</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"
+  />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #panorama {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="panorama"></div>
+
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"
+  ></script>
+  <script>
+    var viewer = pannellum.viewer('panorama', {
+      "default": {
+        "firstScene": "foyer",
+        "author": "Your House Tour",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true,
+        "autoRotate": -2,                         // auto‑rotate speed in deg/sec; negative for clockwise :contentReference[oaicite:1]{index=1}
+        "autoRotateInactivityDelay": 5000,       // milliseconds after which autoRotate resumes after user interaction :contentReference[oaicite:2]{index=2}
+        "compass": true,
+        "showControls": true,
+        "showFullscreenCtrl": true
+      },
+      "scenes": {
+        // Main Floor Scenes
+        "foyer": {
+          "title": "Foyer",
+          "type": "equirectangular",
+          "panorama": "Foyer.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Great Room", "sceneId": "greatroom" },
+            { "pitch": 0, "yaw": -30, "type": "scene", "text": "Powder Room", "sceneId": "powder" },
+            { "pitch": 0, "yaw": 150, "type": "scene", "text": "Rec Room (Downstairs)", "sceneId": "recroom_down" }
+          ]
+        },
+        "greatroom": {
+          "title": "Great Room",
+          "type": "equirectangular",
+          "panorama": "GreatRoom.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": -135, "type": "scene", "text": "Foyer", "sceneId": "foyer" },
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Dining Room", "sceneId": "dining" },
+            { "pitch": 0, "yaw": 90, "type": "scene", "text": "Kitchen", "sceneId": "kitchen" }
+          ]
+        },
+        "dining": {
+          "title": "Dining Room",
+          "type": "equirectangular",
+          "panorama": "Dining.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": -90, "type": "scene", "text": "Kitchen", "sceneId": "kitchen" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Foyer", "sceneId": "foyer" },
+            { "pitch": 0, "yaw": -45, "type": "scene", "text": "Great Room", "sceneId": "greatroom" }
+          ]
+        },
+        "kitchen": {
+          "title": "Kitchen",
+          "type": "equirectangular",
+          "panorama": "Kitchen.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": -30, "type": "scene", "text": "Laundry", "sceneId": "laundry" },
+            { "pitch": 0, "yaw": 150, "type": "scene", "text": "Foyer", "sceneId": "foyer" },
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Great Room", "sceneId": "greatroom" },
+            { "pitch": 0, "yaw": -90, "type": "scene", "text": "Dining Room", "sceneId": "dining" }
+          ]
+        },
+        "laundry": {
+          "title": "Laundry",
+          "type": "equirectangular",
+          "panorama": "Laundry.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 90, "type": "scene", "text": "Powder Room", "sceneId": "powder" },
+            { "pitch": 0, "yaw": -90, "type": "scene", "text": "Kitchen", "sceneId": "kitchen" }
+          ]
+        },
+        "powder": {
+          "title": "Powder Room",
+          "type": "equirectangular",
+          "panorama": "Powder.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": -45, "type": "scene", "text": "Laundry", "sceneId": "laundry" },
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Loft (Upstairs)", "sceneId": "loft" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Foyer", "sceneId": "foyer" }
+          ]
+        },
+        // Upper Floor Scenes
+        "loft": {
+          "title": "Loft",
+          "type": "equirectangular",
+          "panorama": "Loft.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Powder Room (Main Floor)", "sceneId": "powder" },
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Bedroom 2", "sceneId": "bedroom2" },
+            { "pitch": 0, "yaw": -45, "type": "scene", "text": "Master Bedroom", "sceneId": "masterbedroom" }
+          ]
+        },
+        "bedroom2": {
+          "title": "Bedroom 2",
+          "type": "equirectangular",
+          "panorama": "Bedroom2.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 0, "type": "scene", "text": "Bedroom2_1", "sceneId": "bedroom2_1" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Loft", "sceneId": "loft" }
+          ]
+        },
+        "bedroom2_1": {
+          "title": "Bedroom 2_1",
+          "type": "equirectangular",
+          "panorama": "Bedroom2_1.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 90, "type": "scene", "text": "Bath 2", "sceneId": "bath2" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Loft", "sceneId": "loft" },
+            { "pitch": 0, "yaw": 0, "type": "scene", "text": "Bedroom2", "sceneId": "bedroom2" },
+            { "pitch": 0, "yaw": -90, "type": "scene", "text": "Bedroom2 Closet", "sceneId": "bedroom2_closet" }
+          ]
+        },
+        "bath2": {
+          "title": "Bath 2",
+          "type": "equirectangular",
+          "panorama": "Bath2.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Bedroom2_1", "sceneId": "bedroom2_1" }
+          ]
+        },
+        "bedroom2_closet": {
+          "title": "Bedroom2 Closet",
+          "type": "equirectangular",
+          "panorama": "Bedroom2_Closet.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Bedroom2_1", "sceneId": "bedroom2_1" }
+          ]
+        },
+        "masterbedroom": {
+          "title": "Master Bedroom",
+          "type": "equirectangular",
+          "panorama": "MasterBedroom.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "MasterBedroom_1", "sceneId": "masterbedroom_1" },
+            { "pitch": 0, "yaw": -135, "type": "scene", "text": "Loft", "sceneId": "loft" }
+          ]
+        },
+        "masterbedroom_1": {
+          "title": "Master Bedroom 1",
+          "type": "equirectangular",
+          "panorama": "MasterBedroom_1.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 0, "type": "scene", "text": "Master Bath", "sceneId": "masterbath" },
+            { "pitch": 0, "yaw": -135, "type": "scene", "text": "Loft", "sceneId": "loft" },
+            { "pitch": 0, "yaw": 135, "type": "scene", "text": "Master Bedroom", "sceneId": "masterbedroom" }
+          ]
+        },
+        "masterbath": {
+          "title": "Master Bath",
+          "type": "equirectangular",
+          "panorama": "MasterBath.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Master Closet", "sceneId": "mastercloset" },
+            { "pitch": 0, "yaw": 0, "type": "scene", "text": "MasterBedroom_1", "sceneId": "masterbedroom_1" }
+          ]
+        },
+        "mastercloset": {
+          "title": "Master Closet",
+          "type": "equirectangular",
+          "panorama": "MasterCloset.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Master Bath", "sceneId": "masterbath" }
+          ]
+        },
+        // Lower Floor Scenes
+        "recroom_down": {
+          "title": "Rec Room (Downstairs)",
+          "type": "equirectangular",
+          "panorama": "RecRoom.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Bedroom3", "sceneId": "bedroom3" },
+            { "pitch": 0, "yaw": -30, "type": "scene", "text": "Bath4", "sceneId": "bath4" },
+            { "pitch": 0, "yaw": 135, "type": "scene", "text": "Bedroom4", "sceneId": "bedroom4" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "RecRoom_1", "sceneId": "recroom_1" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Foyer", "sceneId": "foyer" }
+          ]
+        },
+        "bedroom3": {
+          "title": "Bedroom3",
+          "type": "equirectangular",
+          "panorama": "Bedroom3.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Rec Room Down", "sceneId": "recroom_down" },
+            { "pitch": 0, "yaw": 90, "type": "scene", "text": "Bedroom3 Closet", "sceneId": "bedroom3_closet" }
+          ]
+        },
+        "bedroom3_closet": {
+          "title": "Bedroom3 Closet",
+          "type": "equirectangular",
+          "panorama": "Bedroom3_Closet.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Bedroom3", "sceneId": "bedroom3" },
+            { "pitch": 0, "yaw": 270, "type": "scene", "text": "RecRoom_1", "sceneId": "recroom_1" }
+          ]
+        },
+        "bath4": {
+          "title": "Bath4",
+          "type": "equirectangular",
+          "panorama": "Bath4.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Bedroom3", "sceneId": "bedroom3" },
+            { "pitch": 0, "yaw": 90, "type": "scene", "text": "Bath4_1", "sceneId": "bath4_1" },
+            { "pitch": 0, "yaw": 135, "type": "scene", "text": "Bedroom4", "sceneId": "bedroom4" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Rec Room", "sceneId": "recroom_down" }
+          ]
+        },
+        "bedroom4": {
+          "title": "Bedroom4",
+          "type": "equirectangular",
+          "panorama": "Bedroom4.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": -90, "type": "scene", "text": "Bath4", "sceneId": "bath4" },
+            { "pitch": 0, "yaw": 45, "type": "scene", "text": "Bedroom4_1", "sceneId": "bedroom4_1" },
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "RecRoom_1", "sceneId": "recroom_1" }
+          ]
+        },
+        "recroom_1": {
+          "title": "RecRoom_1",
+          "type": "equirectangular",
+          "panorama": "RecRoom_1.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Rec Room Down", "sceneId": "recroom_down" },
+            { "pitch": 0, "yaw": -90, "type": "scene", "text": "Bedroom3", "sceneId": "bedroom3" },
+            { "pitch": 0, "yaw": 90, "type": "scene", "text": "Bedroom4", "sceneId": "bedroom4" }
+          ]
+        },
+        "bath4_1": {
+          "title": "Bath4_1",
+          "type": "equirectangular",
+          "panorama": "Bath4_1.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "Bath4", "sceneId": "bath4" }
+          ]
+        },
+        "bedroom4_1": {
+          "title": "Bedroom4_1",
+          "type": "equirectangular",
+          "panorama": "Bedroom4_1.jpg",
+          "hotSpots": [
+            { "pitch": 0, "yaw": 180, "type": "scene", "text": "RecRoom_1", "sceneId": "recroom_1" },
+            { "pitch": 0, "yaw": -90, "type": "scene", "text": "Bath4", "sceneId": "bath4" }
+          ]
+        }
+      }
+    });
+  </script>
+</body>
+</html>
