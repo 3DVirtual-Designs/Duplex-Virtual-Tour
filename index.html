@@ -20,6 +20,19 @@
       width: 100%;
       height: 100%;
     }
+    /* Custom CSS class for hotspots whose labels should always show */
+    .always‑label .pnlm-tooltip {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* Maybe adjust styling if needed */
+    .always‑label .pnlm-tooltip span {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 2px 4px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -30,6 +43,22 @@
     src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"
   ></script>
   <script>
+    function alwaysTooltip(hotspotDiv, args) {
+      // hotspotDiv is the container div for this hotspot
+      // args is the "createTooltipArgs" passed, could be the text
+      var tooltip = hotspotDiv.querySelector('.pnlm-tooltip');
+      if (!tooltip) {
+        // default Pannellum creates .pnlm-tooltip inside hotspotDiv
+        // but sometimes need to manually create
+        tooltip = document.createElement('div');
+        tooltip.className = 'pnlm-tooltip';
+        hotspotDiv.appendChild(tooltip);
+      }
+      tooltip.innerText = args;
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+      // Optionally adjust position or styling here
+    }
     var viewer = pannellum.viewer('panorama', {
       "default": {
         "firstScene": "foyer",
@@ -50,7 +79,8 @@
           "panorama": "Foyer.jpg",
           "hotSpots": [
             { "pitch": 0, "yaw": -75, "type": "scene", "text": "Great Room", "sceneId": "greatroom" },
-            { "pitch": 0, "yaw": 5, "type": "scene", "text": "Powder Room", "sceneId": "powder" },
+            { "pitch": 0, "yaw": 5, "type": "scene", "text": "Powder Room", "sceneId": "powder", "cssClass": "always‑label",
+              "createTooltipFunc": alwaysTooltip,"createTooltipArgs": "Powder Room"},
             { "pitch": -15, "yaw": 78, "type": "scene", "text": "Rec Room (Downstairs)", "sceneId": "recroom" }
           ]
         },
@@ -271,6 +301,7 @@
   </script>
 </body>
 </html>
+
 
 
 
