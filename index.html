@@ -34,11 +34,93 @@
       white-space: nowrap;
       font-weight: bold;
     }
+
+
+    /* Styling for the top-right overlay box */
+        .global-info-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .info-header {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Hidden by default */
+        .info-content {
+            max-height: 0;
+            overflow: hidden;
+            width: 260px;
+            font-size: 14px;
+            line-height: 1.5;
+            transition: max-height 0.4s ease-out, margin-top 0.3s;
+        }
+
+        /* Show content when mouse hovers over the element */
+        .global-info-overlay:hover .info-content {
+            max-height: 150px;
+            margin-top: 10px;
+        }
+    
+    
+    
+    /* Styling for the top-right overlay box */
+        .global-info-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .info-header {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Hidden by default */
+        .info-content {
+            max-height: 0;
+            overflow: hidden;
+            width: 260px;
+            font-size: 14px;
+            line-height: 1.5;
+            transition: max-height 0.4s ease-out, margin-top 0.3s;
+        }
+
+        /* Show content when mouse hovers over the element */
+        .global-info-overlay:hover .info-content {
+            max-height: 150px;
+            margin-top: 10px;
+        }
+
+
+    
   </style>
 </head>
 <body>
   <div id="panorama"></div>
-
+<!-- Global Info Text Overlay -->
+        <div class="global-info-overlay">
+            <div class="info-header">
+                <span>ℹ️ Info</span>
+            </div>
+            <div class="info-content">
+                <!-- TYPE YOUR ONE PARAGRAPH HERE -->
+                <p>Welcome to our tour! Move your mouse around to explore the space and click on the circular arrow hotspots to travel between the different scenes.</p>
+            </div>
   <script
     type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"
